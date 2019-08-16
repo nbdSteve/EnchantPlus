@@ -1,0 +1,8 @@
+name: EnchantPlus
+version: ${project.version}
+main: dev.nuer.enchantplus.EnchantPlus
+api-version: 1.13
+prefix: Enchant+
+authors: [Nuer]
+description: Customizable & expandable custom enchantment plugin, designed for PvP gamemodes.
+website: https://nuer.dev

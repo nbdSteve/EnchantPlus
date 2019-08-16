@@ -1,0 +1,5 @@
+use-exp-points: true
+
+# <enchantment name : associated .yml file>
+enchantment-list:
+  - 'gears:gears.yml'
