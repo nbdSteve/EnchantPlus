@@ -3,6 +3,7 @@ package dev.nuer.enchantplus.enchants;
 import dev.nuer.enchantplus.enable.FileManager;
 import dev.nuer.enchantplus.utils.LogUtil;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.util.HashMap;
@@ -31,5 +32,11 @@ public class CustomEnchantmentManager {
                 LogUtil.warning("Error loading enchantment: " + parts[0] + ", please check " + parts[1] + " for any formatting errors.");
             }
         }
+    }
+
+    public static void giveItem(String enchantID, Player player, int level) {
+        CustomEnchantment enchantment = loadedEnchantments.get(enchantID);
+        enchantment.getItemBuilder().addName(enchantment.getConfig().getString("item.name"), "{level}", String.valueOf(level));
+        enchantment.getItemBuilder().give(player);
     }
 }

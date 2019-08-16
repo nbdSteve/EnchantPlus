@@ -2,6 +2,7 @@ package dev.nuer.enchantplus.utils;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -40,6 +41,11 @@ public class ItemBuilderUtil {
 
     public void addName(String name) {
         itemMeta.setDisplayName(ColorUtil.colorize(name));
+        item.setItemMeta(itemMeta);
+    }
+
+    public void addName(String name, String placeholder, String replacement) {
+        itemMeta.setDisplayName(ColorUtil.colorize(name.replace(placeholder, ColorUtil.colorize(replacement))));
         item.setItemMeta(itemMeta);
     }
 
@@ -84,10 +90,10 @@ public class ItemBuilderUtil {
 //        nbtItem.setString("toxic-top.core-id", coreId);
 //    }
 
-//    public void give(Player player, String faction, String coreId) {
+    public void give(Player player) {
 //        addNBT(faction, coreId);
-//        player.getInventory().addItem(nbtItem.getItem());
-//    }
+        player.getInventory().addItem(getItem());
+    }
 
     public Material getMaterial() {
         return material;

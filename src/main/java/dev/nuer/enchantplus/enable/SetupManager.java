@@ -1,6 +1,7 @@
 package dev.nuer.enchantplus.enable;
 
 import dev.nuer.enchantplus.EnchantPlus;
+import dev.nuer.enchantplus.cmd.CeCmd;
 import dev.nuer.enchantplus.enchants.CustomEnchantmentManager;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -24,7 +25,7 @@ public class SetupManager {
     }
 
     public static void registerCommands(EnchantPlus instance) {
-//        instance.getCommand("challenges").setExecutor(new ChallengesCmd());
+        instance.getCommand("custom-enchantment").setExecutor(new CeCmd());
 //        instance.getCommand("tiers").setExecutor(new TiersCmd());
     }
 

@@ -15,6 +15,7 @@ public final class EnchantPlus extends JavaPlugin {
         instance = this;
         logger = getLogger();
         SetupManager.setupFiles(new FileManager(this));
+        SetupManager.registerCommands(this);
     }
 
     @Override

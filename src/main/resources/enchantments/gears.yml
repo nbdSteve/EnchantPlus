@@ -25,3 +25,16 @@ attributes:
       3: 3
       4: 4
       5: 5
+#
+item:
+  material: 'book'
+  data-value: 0
+  name: '&e&lGears {level}'
+  lore:
+    - '&7 '
+    - '&7&o((drag n drop onto boots.))'
+    - '&7 '
+  enchantments:
+    - 'lure:1'
+  item-flags:
+    - 'hide_enchants'

@@ -6,3 +6,9 @@ prefix: Enchant+
 authors: [Nuer]
 description: Customizable & expandable custom enchantment plugin, designed for PvP gamemodes.
 website: https://nuer.dev
+commands:
+  custom-enchantment:
+    aliases:
+      - ce
+      - customenchant
+      - enchant
