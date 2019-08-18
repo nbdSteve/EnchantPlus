@@ -4,12 +4,13 @@ max-level: 5
 #
 starting-level: 1
 #
-gui-cost: 100
+cost: 100
 #
 enchantment-lore: '&e&lGears {level}'
 #
 active-items:
   - 'leather_boots:0'
+  #- 'chainmail_boots:0'
   - 'iron_boots:0'
   - 'gold_boots:0'
   - 'diamond_boots:0'
@@ -20,11 +21,11 @@ attributes:
     effect-type: 'potion'
     potion-type: 'speed'
     effect-per-level:
-      1: 1
-      2: 2
-      3: 3
-      4: 4
-      5: 5
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
 #
 item:
   material: 'book'

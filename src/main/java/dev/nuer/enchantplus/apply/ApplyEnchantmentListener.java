@@ -11,6 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
+
 public class ApplyEnchantmentListener implements Listener {
 
     @EventHandler
@@ -42,13 +44,20 @@ public class ApplyEnchantmentListener implements Listener {
         if (!canApply) return;
         //Get nbtdata of the current item
         NBTItem item = new NBTItem(event.getCurrentItem());
-        if (item.getBoolean("enchant+." + enchantID)) return;
+        HashMap enchants;
+        if (item.getObject("enchant+.custom-enchantments", HashMap.class) == null) {
+            enchants = new HashMap<>();
+        } else {
+            enchants = item.getObject("enchant+.custom-enchantments", HashMap.class);
+        }
+        if (enchants.containsKey(enchantID) && (double) enchants.get(enchantID) >= level) return;
         //If the enchant is going to be applied, cancel the click event so that items don't swap
         event.setCancelled(true);
         //Add the new line of lore
         NBTList lore = item.addCompound("display").getStringList("Lore");
         lore.add(enchantment.getLore().replace("{level}", String.valueOf(level)));
-        item.setInteger("enchant+." + enchantID, level);
+        enchants.put(enchantID, (double) level);
+        item.setObject("enchant+.custom-enchantments", enchants);
         //Update the players inventory
         event.getCursor().setType(Material.AIR);
         event.getWhoClicked().getInventory().remove(event.getCurrentItem());

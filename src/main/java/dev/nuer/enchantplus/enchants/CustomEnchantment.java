@@ -4,6 +4,7 @@ import dev.nuer.enchantplus.attributes.Attribute;
 import dev.nuer.enchantplus.attributes.AttributeType;
 import dev.nuer.enchantplus.utils.ColorUtil;
 import dev.nuer.enchantplus.utils.ItemBuilderUtil;
+import dev.nuer.enchantplus.utils.LogUtil;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
@@ -31,6 +32,7 @@ public class CustomEnchantment {
         this.config = config;
         setActiveItems(activeItems);
         setAttributes();
+        LogUtil.info(getAttributes().toString());
         this.itemBuilder = createItem();
     }
 
