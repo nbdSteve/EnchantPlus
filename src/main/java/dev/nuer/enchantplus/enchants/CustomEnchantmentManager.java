@@ -34,9 +34,14 @@ public class CustomEnchantmentManager {
         }
     }
 
+    public static CustomEnchantment getEnchantmentByID(String enchantID) {
+        return loadedEnchantments.get(enchantID);
+    }
+
     public static void giveItem(String enchantID, Player player, int level) {
         CustomEnchantment enchantment = loadedEnchantments.get(enchantID);
         enchantment.getItemBuilder().addName(enchantment.getConfig().getString("item.name"), "{level}", String.valueOf(level));
+        enchantment.getItemBuilder().addBookNBT(enchantID, level);
         enchantment.getItemBuilder().give(player);
     }
 }

@@ -2,6 +2,7 @@ package dev.nuer.enchantplus.enchants;
 
 import dev.nuer.enchantplus.attributes.Attribute;
 import dev.nuer.enchantplus.attributes.AttributeType;
+import dev.nuer.enchantplus.utils.ColorUtil;
 import dev.nuer.enchantplus.utils.ItemBuilderUtil;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -93,7 +94,7 @@ public class CustomEnchantment {
     }
 
     public String getLore() {
-        return lore;
+        return ColorUtil.colorize(lore);
     }
 
     public void setLore(String lore) {

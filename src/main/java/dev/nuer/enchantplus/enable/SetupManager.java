@@ -1,8 +1,10 @@
 package dev.nuer.enchantplus.enable;
 
 import dev.nuer.enchantplus.EnchantPlus;
+import dev.nuer.enchantplus.apply.ApplyEnchantmentListener;
 import dev.nuer.enchantplus.cmd.CeCmd;
 import dev.nuer.enchantplus.enchants.CustomEnchantmentManager;
+import dev.nuer.enchantplus.utils.armorequipevent.ArmorListener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
@@ -36,6 +38,8 @@ public class SetupManager {
      */
     public static void registerEvents(Plugin instance) {
         PluginManager pm = instance.getServer().getPluginManager();
+        pm.registerEvents(new ArmorListener(FileManager.get("config").getStringList("blocked")), instance);
+        pm.registerEvents(new ApplyEnchantmentListener(), instance);
 //        pm.registerEvents(new BrewChallengeListener(), instance);
     }
 }

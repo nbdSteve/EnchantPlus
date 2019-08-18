@@ -1,5 +1,6 @@
 package dev.nuer.enchantplus.utils;
 
+import dev.nuer.enchantplus.utils.nbtapi.NBTItem;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -21,6 +22,7 @@ public class ItemBuilderUtil {
     private List<String> lore = new ArrayList<>();
     private Map<Enchantment, Integer> enchantments = new HashMap<>();
     private Set<ItemFlag> flags = new HashSet<>();
+    private NBTItem nbtItem;
 
     public ItemBuilderUtil(ItemStack item) {
         this.item = item;
@@ -83,16 +85,15 @@ public class ItemBuilderUtil {
         item.setItemMeta(itemMeta);
     }
 
-//    public void addNBT(String faction, String coreId) {
-//        this.nbtItem = new NBTItem(item);
-//        nbtItem.setBoolean("toxic-top.core", true);
-//        nbtItem.setString("toxic-top.faction", faction);
-//        nbtItem.setString("toxic-top.core-id", coreId);
-//    }
+    public void addBookNBT(String enchantID, int level) {
+        this.nbtItem = new NBTItem(item);
+        nbtItem.setBoolean("enchant+.book", true);
+        nbtItem.setString("enchant+.book.enchantment-id", enchantID);
+        nbtItem.setInteger("enchant+.book.level", level);
+    }
 
     public void give(Player player) {
-//        addNBT(faction, coreId);
-        player.getInventory().addItem(getItem());
+        player.getInventory().addItem(nbtItem.getItem());
     }
 
     public Material getMaterial() {
